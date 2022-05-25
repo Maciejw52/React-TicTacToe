@@ -6,8 +6,10 @@ export default function Header() {
     <>
     <div class="row">
 
-      <div class="col" >
-        <div class="align-middle">TIC TAC TOE</div>
+      <div class="col" style={{outline: 2}}>
+        <div>
+          <h2 style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '25vh'}}>TIC TAC TOE</h2>
+        </div>
       </div>
       <div class="col">
         <Scoreboard/>  

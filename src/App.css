@@ -13,4 +13,7 @@
   padding : 50px;
 }
 
-
+.image-contain {
+  object-fit: contain;
+  object-position: center;
+}
