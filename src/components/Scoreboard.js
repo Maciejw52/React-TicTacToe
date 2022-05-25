@@ -3,34 +3,33 @@ import { useState } from 'react'
 
 
 export default function Scoreboard() {
-  const [numCount, setNumCount] = useState(0);
+  const [playerOneWins, setplayerOneWins] = useState(2);
+  const [playerTwoWins, setplayerTwoWins] = useState(3);
 
   const handleOnClick = () => {
-    setNumCount( (prev) => {
-      let num = prev + 1;
-      return num;
-    })
-    console.log(numCount);
+
   }
 
-  const handleSubtract = () => {
-    setNumCount( (prev) => {
-      let num = prev - 1;
-      return num;
-    })
-    console.log(numCount);
+  
+  const handleResetScoreboard = () => {
+    setplayerOneWins(0);
+    setplayerTwoWins(0);
   }
-
 
   return (
     <>
     <h2>Scoreboard</h2>
-    <p> Player 1: </p>
-    <p> Player 2: </p>
-    <p> Count: {numCount}</p>
-    <button onClick={handleOnClick} > click me! </button>
-    <button onClick={handleSubtract} > Subtract! </button>
-
+    <p> Player 1: {playerOneWins}</p>
+    <p> Player 2: {playerTwoWins}</p>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <button type="button" class="btn btn-outline-warning" onClick={handleOnClick} > Reset Game </button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-outline-danger" onClick={handleResetScoreboard} > Reset Scoreboard </button>
+      </div>
+    </div>
     </>   
   )
 }

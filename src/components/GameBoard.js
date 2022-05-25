@@ -4,7 +4,7 @@ import Winner from './Winner';
 import { useState, useEffect } from 'react';
 
 let FIRSTPLAYER = true;
-let symbol = "";
+let symbol;
 
 export default function GameBoard() {
   let tileSymbols = {
@@ -55,7 +55,6 @@ export default function GameBoard() {
   return (
     <>    
     <TurnTracker/>
-    <div>GameBoard</div>
 
     <div className="gridContainer">
       <div className="gridItem" onClick={ () => {playerClick(1)}} >{gameSymbol[1]}</div>

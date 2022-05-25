@@ -5,9 +5,15 @@ export default function Header() {
   return (
     <>
     <div class="row">
-      <div class="col">Header</div>
-      <Scoreboard class="col"></Scoreboard>  
+
+      <div class="col" >
+        <div class="align-middle">TIC TAC TOE</div>
+      </div>
+      <div class="col">
+        <Scoreboard/>  
+      </div>
     </div>
+  
     </>
   )
 }
