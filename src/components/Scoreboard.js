@@ -8,7 +8,6 @@ export default function Scoreboard({ tileSymbols, gameSymbol, setGameSymbol }) {
   const handleResetGame = () => {
     setGameSymbol(tileSymbols);
   }
-
   
   const handleResetScoreboard = () => {
     setplayerOneWins(0);
@@ -23,10 +22,10 @@ export default function Scoreboard({ tileSymbols, gameSymbol, setGameSymbol }) {
     <div class="row">
       <div class="col"></div>
       <div class="col">
-        <button type="button" class="btn btn-outline-warning" onClick={handleResetGame} > Reset Game </button>
+        <button type="button" class="btn btn-light" onClick={handleResetGame} > Reset Game </button>
       </div>
       <div class="col">
-        <button type="button" class="btn btn-outline-danger" onClick={handleResetScoreboard} > Reset Scoreboard </button>
+        <button type="button" class="btn btn-light" onClick={handleResetScoreboard} > Reset Scoreboard </button>
       </div>
     </div>
     </>   
