@@ -1,13 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 
-
-export default function Scoreboard() {
+export default function Scoreboard({ tileSymbols, gameSymbol, setGameSymbol }) {
   const [playerOneWins, setplayerOneWins] = useState(2);
   const [playerTwoWins, setplayerTwoWins] = useState(3);
 
-  const handleOnClick = () => {
-
+  const handleResetGame = () => {
+    //setGameState(tileSymbols);
   }
 
   
@@ -24,7 +23,7 @@ export default function Scoreboard() {
     <div class="row">
       <div class="col"></div>
       <div class="col">
-        <button type="button" class="btn btn-outline-warning" onClick={handleOnClick} > Reset Game </button>
+        <button type="button" class="btn btn-outline-warning" onClick={handleResetScoreboard} > Reset Game </button>
       </div>
       <div class="col">
         <button type="button" class="btn btn-outline-danger" onClick={handleResetScoreboard} > Reset Scoreboard </button>

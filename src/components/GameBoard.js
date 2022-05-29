@@ -6,21 +6,11 @@ import { useState, useEffect } from 'react';
 let FIRSTPLAYER = true;
 let symbol;
 
-export default function GameBoard() {
-  let tileSymbols = {
-    1 : "",
-    2 : "",
-    3 : "",
-    4 : "",
-    5 : "",
-    6 : "",
-    7 : "",
-    8 : "",
-    9 : ""
-  };
-  
-  const [gameSymbol,setGameSymbol] = useState(tileSymbols);
+export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol }) {
+
+
   const [player, setPlayer] = useState(FIRSTPLAYER);
+  const [winner, setWinner] = useState(0);
 
   const playerClick = (boxId) => {
 
@@ -46,11 +36,18 @@ export default function GameBoard() {
         newObj[boxId] = symbol;
       }    
 
+      //checkWinner(newObj);
       return newObj;
     });
   };  
   
+  /*const checkWinner = (obj) => {
+      if()
+    }
+  }*/
 
+  
+  
   
   return (
     <>    
