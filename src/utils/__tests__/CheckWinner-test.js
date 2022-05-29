@@ -1,6 +1,6 @@
-import CheckWinner from '../CheckWinner.js';
+const { CheckWinner } = require('../CheckWinner');
 
-describe("Check Winner", () => {
+describe("Check winner", () => {
         test("Function checks all horizontal are equal to X", () => {
             const obj = {
                 1: "X",
