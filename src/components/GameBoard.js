@@ -1,16 +1,18 @@
 import React from 'react'
 import TurnTracker from './TurnTracker';
 import Winner from './Winner';
-import { useState, useEffect } from 'react';
-
-let FIRSTPLAYER = true;
-let symbol;
+import { useState } from 'react';
+import CheckWinner from '../utils/CheckWinner';
 
 export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol }) {
 
+  const PlayerNumber = {
+    1 : "X",
+    2 : "O"
+  }
 
-  const [player, setPlayer] = useState(FIRSTPLAYER);
-  const [winner, setWinner] = useState(0);
+  let [player, setPlayer] = useState(PlayerNumber[1]);
+  //let [playerSymbol, setPlayerSymbol] = useState(Object.getOwnPropertyNames(PlayerNumber[1]));
 
   const playerClick = (boxId) => {
 
@@ -19,24 +21,22 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol }) {
 
       if(newObj[boxId] === ""){
 
-        setPlayer( (bool) => { 
-          switch(symbol){
+        setPlayer( () => { 
+
+          switch(player){
+
             case "X":
-              symbol = "O";
-              break;
+              newObj[boxId] = "X";
+              return PlayerNumber[2];
+
             case "O":
-              symbol = "X";
-              break;
-            default:
-              symbol = "X";
+              newObj[boxId] = "X";
+              return PlayerNumber[1];
           }
-          return bool;
         });
+      }
 
-        newObj[boxId] = symbol;
-      }    
-
-      //checkWinner(newObj);
+      CheckWinner(newObj);
       return newObj;
     });
   };  

@@ -2,13 +2,13 @@ import React from 'react'
 import { useState } from 'react'
 
 export default function Scoreboard({ tileSymbols, gameSymbol, setGameSymbol }) {
+  
   const [playerOneWins, setplayerOneWins] = useState(2);
   const [playerTwoWins, setplayerTwoWins] = useState(3);
 
   const handleResetGame = () => {
     setGameSymbol(tileSymbols);
   }
-
   
   const handleResetScoreboard = () => {
     setplayerOneWins(0);
