@@ -6,7 +6,7 @@ export default function Scoreboard({ tileSymbols, gameSymbol, setGameSymbol }) {
   const [playerTwoWins, setplayerTwoWins] = useState(3);
 
   const handleResetGame = () => {
-    //setGameState(tileSymbols);
+    setGameSymbol(tileSymbols);
   }
 
   
@@ -23,7 +23,7 @@ export default function Scoreboard({ tileSymbols, gameSymbol, setGameSymbol }) {
     <div class="row">
       <div class="col"></div>
       <div class="col">
-        <button type="button" class="btn btn-outline-warning" onClick={handleResetScoreboard} > Reset Game </button>
+        <button type="button" class="btn btn-outline-warning" onClick={handleResetGame} > Reset Game </button>
       </div>
       <div class="col">
         <button type="button" class="btn btn-outline-danger" onClick={handleResetScoreboard} > Reset Scoreboard </button>
