@@ -1,7 +1,6 @@
 import './App.css';
 import GameBoard from './components/GameBoard';
 import Header from './components/Header';
-import {Button} from 'react-bootstrap';
 import React from 'react'
 import { useState } from 'react'
 
