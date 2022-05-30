@@ -2,6 +2,9 @@ import React from 'react'
 
 export default function TurnTracker() {
   return (
-    <div>TurnTracker</div>
+    <>
+      <div className='turn-tracker' >Turn Tracker</div>            
+    </>
+
   )
 }

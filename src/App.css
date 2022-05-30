@@ -60,6 +60,6 @@
   padding: 10;
 }
 
-#button-to-reset {
-  min-width: min-content
+.scoreboard {
+  text-align: center;
 }

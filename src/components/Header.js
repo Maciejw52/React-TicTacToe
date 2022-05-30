@@ -1,7 +1,7 @@
 import React from 'react'
 import Scoreboard from './Scoreboard'
 
-export default function Header({ tileSymbols, gameSymbol, setGameSymbol }) {
+export default function Header({ tileSymbols, gameSymbol, setGameSymbol, score, playerScore, setPlayerScore}) {
   return (
     <>
     <div class="row">
@@ -12,7 +12,7 @@ export default function Header({ tileSymbols, gameSymbol, setGameSymbol }) {
         </div>
       </div>
       <div class="col">
-        <Scoreboard tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol}/>  
+        <Scoreboard tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore}/>  
       </div>
     </div>
   

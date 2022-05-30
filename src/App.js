@@ -16,13 +16,19 @@ function App() {
     8 : "",
     9 : ""
   };
-  
+
+  let score = {
+    "1" : 0,
+    "2" : 0
+  }
+
+  const [playerScore, setPlayerScore] = useState(score);
   const [gameSymbol,setGameSymbol] = useState(tileSymbols);
   
   return (
     <>
-    <Header tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol}/>
-    <GameBoard tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} />
+    <Header tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore}/>
+    <GameBoard tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore} />
     </>
   );
 }

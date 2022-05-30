@@ -4,7 +4,7 @@ import Winner from './Winner';
 import { useState } from 'react';
 import CheckWinner from '../utils/CheckWinner';
 
-export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol }) {
+export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, score, playerScore, setPlayerScore }) {
 
   const PlayerNumber = {
     1 : "X",
@@ -16,26 +16,38 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol }) {
   const playerClick = (boxId) => {
 
     setGameSymbol( (prev) => {
+
       const newObj = {...prev};
+      // will only allow player to select if the game is not yet won
+      if(!CheckWinner(newObj)){
+        // only allows player to place X/O in an empty field
+        if(newObj[boxId] === ""){
+          
+          // sets the empty field to X/O
+          newObj[boxId] = PlayerNumber[player];
 
-      if(newObj[boxId] === ""){
+          // checks if the current player has won and if so adds 1 to their tally
+          if(CheckWinner(newObj)){
+            setPlayerScore( (previous) => {
+              const obj = {...previous};
+              console.log(`Scores ${obj}`);
+              obj[player] =+ 1;
+              return obj;
+            });
+          };
 
-        setPlayer( () => { 
-          switch(player){
+          // Sets the next player
+          setPlayer( () => { 
+            switch(player){
+              case 1:
+                return 2;
+              case 2:
+                return 1;
+              }
+          });
+        }    
+      }
 
-            case 1:
-              newObj[boxId] = PlayerNumber[1];
-              CheckWinner(newObj);
-              return 2;
-
-            case 2:
-              newObj[boxId] = PlayerNumber[2];
-              CheckWinner(newObj);
-              return 1;
-
-          }
-        });
-      }    
       return newObj;
     });
   };  
@@ -57,7 +69,7 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol }) {
       <div className="gridItem69" onClick={ () => {playerClick(9)}} >{gameSymbol[9]}</div>
     </div>
 
-    <Winner/>
+    <Winner  />
     </>
 
   )

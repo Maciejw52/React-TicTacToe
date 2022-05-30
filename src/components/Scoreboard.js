@@ -1,33 +1,29 @@
 import React from 'react'
-import { useState } from 'react'
 
-export default function Scoreboard({ tileSymbols, gameSymbol, setGameSymbol }) {
+export default function Scoreboard({ tileSymbols, gameSymbol, setGameSymbol, score, playerScore, setPlayerScore}) {
   
-  const [playerOneWins, setplayerOneWins] = useState(2);
-  const [playerTwoWins, setplayerTwoWins] = useState(3);
-
   const handleResetGame = () => {
     setGameSymbol(tileSymbols);
   }
   
   const handleResetScoreboard = () => {
-    setplayerOneWins(0);
-    setplayerTwoWins(0);
+    setPlayerScore(score);
   }
 
   return (
     <>
-    <h2>Scoreboard</h2>
-    <p> Player 1: {playerOneWins}</p>
-    <p> Player 2: {playerTwoWins}</p>
+    <h2 className='scoreboard'>SCOREBOARD</h2>
+    <p className='scoreboard'> Player 1: {playerScore[1]}</p>
+    <p className='scoreboard'> Player 2: {playerScore[2]}</p>
     <div class="row">
-      <div class="col"></div>
-      <div class="col">
+    <div class="col"></div>
+      <div class="col" >
         <button type="button" class="btn btn-light" onClick={handleResetGame} > Reset Game </button>
       </div>
       <div class="col">
         <button type="button" class="btn btn-light" onClick={handleResetScoreboard} > Reset Scoreboard </button>
       </div>
+      <div class="col"></div>
     </div>
     </>   
   )
