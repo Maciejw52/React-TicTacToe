@@ -8,7 +8,7 @@
 }
 
 
-.gridItem1 {
+.gridItem {
   display : -ms-inline-grid;
   border : 2px solid rgb(0, 0, 0);
   padding : 50px 50px 50px 50px;

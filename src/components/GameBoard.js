@@ -1,6 +1,5 @@
 import React from 'react'
 import TurnTracker from './TurnTracker';
-import Winner from './Winner';
 import { useState } from 'react';
 import CheckWinner from '../utils/CheckWinner';
 
@@ -30,9 +29,14 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
           if(CheckWinner(newObj)){
             setPlayerScore( (previous) => {
               const obj = {...previous};
-              console.log(`Scores ${obj}`);
               obj[player] =+ 1;
+              
+              // create alert here to pop up and say who won
+
+              //reset game still in progress
+              setTimeout(setGameSymbol(tileSymbols), 2000)
               return obj;
+
             });
           };
 
@@ -46,8 +50,10 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
               }
           });
         }    
+      } else {
+        // Once the player has won it resets game
+        setGameSymbol(tileSymbols);
       }
-
       return newObj;
     });
   };  
@@ -55,21 +61,19 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
   
   return (
     <>    
-    <TurnTracker/>
+    <TurnTracker player={player}/>
 
     <div className="gridContainer">
       <div className="gridItem12" onClick={ () => {playerClick(1)}} >{gameSymbol[1]}</div>
       <div className="gridItem12" onClick={ () => {playerClick(2)}} >{gameSymbol[2]}</div>
       <div className="gridItem3" onClick={ () => {playerClick(3)}} >{gameSymbol[3]}</div>
-      <div className="gridItem1" onClick={ () => {playerClick(4)}} >{gameSymbol[4]}</div>
-      <div className="gridItem1" onClick={ () => {playerClick(5)}} >{gameSymbol[5]}</div>
+      <div className="gridItem" onClick={ () => {playerClick(4)}} >{gameSymbol[4]}</div>
+      <div className="gridItem" onClick={ () => {playerClick(5)}} >{gameSymbol[5]}</div>
       <div className="gridItem69" onClick={ () => {playerClick(6)}} >{gameSymbol[6]}</div>
-      <div className="gridItem1" onClick={ () => {playerClick(7)}} >{gameSymbol[7]}</div>
-      <div className="gridItem1" onClick={ () => {playerClick(8)}} >{gameSymbol[8]}</div>
+      <div className="gridItem" onClick={ () => {playerClick(7)}} >{gameSymbol[7]}</div>
+      <div className="gridItem" onClick={ () => {playerClick(8)}} >{gameSymbol[8]}</div>
       <div className="gridItem69" onClick={ () => {playerClick(9)}} >{gameSymbol[9]}</div>
     </div>
-
-    <Winner  />
     </>
 
   )
