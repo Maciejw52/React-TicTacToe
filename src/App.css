@@ -1,7 +1,7 @@
 .gridContainer {
   height : 400px;
   width : 400px;
-  margin : 0 auto;
+  margin : auto;
   display : grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -42,24 +42,39 @@
   font-size: large;
 }
 
-.winner {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%; 
-  border: 0.5px solid rgb(100, 110, 107);
-  text-align: center;
-  padding: 10;
-}
-
 .turn-tracker {
   margin-left: auto;
   margin-right: auto;
   width: 50%; 
-  border: 0.5px solid rgb(100, 110, 107);
+  border: 3px solid rgb(216, 221, 220);
+  border-style: outset;
   text-align: center;
+  font-size: x-large;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
   padding: 10;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .scoreboard {
   text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  border-left: 2px solid rgb(216, 221, 220);
+}
+
+.gameboard {
+  border: 2px solid rgb(216, 221, 220);
+  border-style: ridge;
+}
+
+.gametitle {
+  display: 'flex';
+  justify-content:'center';
+  align-items:'center';
+  height: '25vh';
+  font-family: "Courier New";
+  font-weight: bolder;
+  font-size : 50;
 }

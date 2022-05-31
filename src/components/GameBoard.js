@@ -29,12 +29,15 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
           if(CheckWinner(newObj)){
             setPlayerScore( (previous) => {
               const obj = {...previous};
-              obj[player] =+ 1;
+              obj[player] = obj[player] + 1;
               
               // create alert here to pop up and say who won
 
-              //reset game still in progress
-              setTimeout(setGameSymbol(tileSymbols), 2000)
+              //reset game after 2 seconds
+              setTimeout(() => {
+                console.log('Initial timeout!')
+                setGameSymbol(tileSymbols);
+              }, 2000);
               return obj;
 
             });
@@ -51,8 +54,11 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
           });
         }    
       } else {
-        // Once the player has won it resets game
-        setGameSymbol(tileSymbols);
+        // Once the player has won it resets game if player clicks on a new field again
+        setTimeout(() => {
+          console.log('Initial timeout!')
+          setGameSymbol(tileSymbols);
+        }, 1000);
       }
       return newObj;
     });
@@ -61,19 +67,21 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
   
   return (
     <>    
-    <TurnTracker player={player}/>
-
-    <div className="gridContainer">
-      <div className="gridItem12" onClick={ () => {playerClick(1)}} >{gameSymbol[1]}</div>
-      <div className="gridItem12" onClick={ () => {playerClick(2)}} >{gameSymbol[2]}</div>
-      <div className="gridItem3" onClick={ () => {playerClick(3)}} >{gameSymbol[3]}</div>
-      <div className="gridItem" onClick={ () => {playerClick(4)}} >{gameSymbol[4]}</div>
-      <div className="gridItem" onClick={ () => {playerClick(5)}} >{gameSymbol[5]}</div>
-      <div className="gridItem69" onClick={ () => {playerClick(6)}} >{gameSymbol[6]}</div>
-      <div className="gridItem" onClick={ () => {playerClick(7)}} >{gameSymbol[7]}</div>
-      <div className="gridItem" onClick={ () => {playerClick(8)}} >{gameSymbol[8]}</div>
-      <div className="gridItem69" onClick={ () => {playerClick(9)}} >{gameSymbol[9]}</div>
+    <div className='gameboard'>
+      <TurnTracker player={player}/>
+      <div className="gridContainer">
+        <div className="gridItem12" onClick={ () => {playerClick(1)}} >{gameSymbol[1]}</div>
+        <div className="gridItem12" onClick={ () => {playerClick(2)}} >{gameSymbol[2]}</div>
+        <div className="gridItem3" onClick={ () => {playerClick(3)}} >{gameSymbol[3]}</div>
+        <div className="gridItem" onClick={ () => {playerClick(4)}} >{gameSymbol[4]}</div>
+        <div className="gridItem" onClick={ () => {playerClick(5)}} >{gameSymbol[5]}</div>
+        <div className="gridItem69" onClick={ () => {playerClick(6)}} >{gameSymbol[6]}</div>
+        <div className="gridItem" onClick={ () => {playerClick(7)}} >{gameSymbol[7]}</div>
+        <div className="gridItem" onClick={ () => {playerClick(8)}} >{gameSymbol[8]}</div>
+        <div className="gridItem69" onClick={ () => {playerClick(9)}} >{gameSymbol[9]}</div>
+      </div>
     </div>
+
     </>
 
   )
