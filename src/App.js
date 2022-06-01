@@ -2,9 +2,10 @@ import './App.css';
 import GameBoard from './components/GameBoard';
 import Header from './components/Header';
 import React from 'react'
-import ReactModal from 'react-modal';
-import { useState } from 'react'
-import { Modal } from 'bootstrap';
+import Modal from "react-modal";
+import { useState } from 'react';
+
+Modal.setAppElement("#root");
 
 function App() {
   let tileSymbols = {
@@ -27,14 +28,10 @@ function App() {
   const [playerScore, setPlayerScore] = useState(score);
   const [gameSymbol,setGameSymbol] = useState(tileSymbols);
   
-  
-
-
   return (
     <>
-    
     <Header tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore}/>
-    <GameBoard tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore}></GameBoard>
+    <GameBoard tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore}></GameBoard>    
     </>
   );
 }

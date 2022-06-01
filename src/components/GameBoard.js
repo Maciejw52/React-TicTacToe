@@ -3,6 +3,7 @@ import TurnTracker from './TurnTracker';
 import { useState } from 'react';
 import CheckWinner from '../utils/CheckWinner';
 import CheckNoWinner from '../utils/CheckNoWinner';
+import PopupWindow from './PopupWindow';
 
 export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, score, playerScore, setPlayerScore }) {
 
@@ -12,6 +13,7 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
   }
 
   const [player, setPlayer] = useState(1);
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
   const playerClick = (boxId) => {
 
@@ -33,12 +35,15 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
               obj[player] = obj[player] + 1;
               
               // create alert here to pop up and say who won
+              setModalIsOpen(true);
 
               //reset game after 2 seconds
               setTimeout(() => {
                 console.log('Game Restarting')
                 setGameSymbol(tileSymbols);
               }, 2000);
+
+              
               return obj;
 
             });
@@ -47,17 +52,21 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
               console.log('Game Restarting')
               setGameSymbol(tileSymbols);
             }, 2000);
+          } else if (!modalIsOpen){
+            setPlayer( () => { 
+              switch(player){
+                case 1:
+                  return 2;
+                case 2:
+                  return 1;
+                }
+            });
           }
 
           // Sets the next player
-          setPlayer( () => { 
-            switch(player){
-              case 1:
-                return 2;
-              case 2:
-                return 1;
-              }
-          });
+          if (!modalIsOpen){
+ 
+          }
         }    
       } else if ( !CheckWinner(newObj)) {
         // Once the player has won it resets game if player clicks on a new field again
@@ -73,9 +82,10 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
   
   
   return (
-    <>    
+    <>
     <div className='gameboard'>
       <TurnTracker player={player}/>
+      <PopupWindow modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} player={player} />
       <div className="gridContainer">
         <div className="gridItem12" onClick={ () => {playerClick(1)}} >{gameSymbol[1]}</div>
         <div className="gridItem12" onClick={ () => {playerClick(2)}} >{gameSymbol[2]}</div>
