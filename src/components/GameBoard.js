@@ -2,6 +2,7 @@ import React from 'react'
 import TurnTracker from './TurnTracker';
 import { useState } from 'react';
 import CheckWinner from '../utils/CheckWinner';
+import CheckNoWinner from '../utils/CheckNoWinner';
 
 export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, score, playerScore, setPlayerScore }) {
 
@@ -35,13 +36,18 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
 
               //reset game after 2 seconds
               setTimeout(() => {
-                console.log('Initial timeout!')
+                console.log('Game Restarting')
                 setGameSymbol(tileSymbols);
               }, 2000);
               return obj;
 
             });
-          };
+          } else if( CheckNoWinner(newObj) ){
+            setTimeout(() => {
+              console.log('Game Restarting')
+              setGameSymbol(tileSymbols);
+            }, 2000);
+          }
 
           // Sets the next player
           setPlayer( () => { 
@@ -53,8 +59,9 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
               }
           });
         }    
-      } else {
+      } else if ( !CheckWinner(newObj)) {
         // Once the player has won it resets game if player clicks on a new field again
+        console.log("HEEHEHEHEHEHEHHE");
         setTimeout(() => {
           console.log('Initial timeout!')
           setGameSymbol(tileSymbols);
