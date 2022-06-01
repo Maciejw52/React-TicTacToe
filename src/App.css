@@ -11,48 +11,56 @@
 .gridItem {
   display : -ms-inline-grid;
   border : 2px solid rgb(0, 0, 0);
-  padding : 50px 50px 50px 50px;
+  padding : 5px 5px 5px 5px;
   border-bottom: white;
   border-left: white;
   text-align:center;
-  font-size: large;
+  align-items: center;
+  font-size: 500%;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .gridItem69 {
   display : -ms-inline-grid;
   border-top : 2px solid rgb(0, 0, 0);
-  padding : 50px 50px 50px 50px;
+  padding : 5px 5px 5px 5px;
   text-align:center;
   font-size: large;
+  font-size: 500%;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .gridItem3 {
   display : -ms-inline-grid;
-  padding : 50px 50px 50px 50px;
+  padding : 5px 5px 5px 5px;
   border: white;
   text-align:center;
   font-size: large;
+  font-size: 500%;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .gridItem12 {
   display : -ms-inline-grid;
   border-right : 2px solid rgb(0, 0, 0);
-  padding : 50px 50px 50px 50px;
+  padding : 5px 5px 5px 5px;
   text-align:center;
   font-size: large;
+  font-size: 500%;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .turn-tracker {
   margin-left: auto;
   margin-right: auto;
-  width: 50%; 
+  width: 30%; 
   border: 3px solid rgb(216, 221, 220);
   border-style: outset;
   text-align: center;
   font-size: x-large;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
-  padding: 10;
+  padding: 20;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -61,12 +69,14 @@
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
-  border-left: 2px solid rgb(216, 221, 220);
+  border-style: ridge;
+  padding-bottom: 3%;
 }
 
 .gameboard {
-  border: 2px solid rgb(216, 221, 220);
+  padding-bottom: 1%;
   border-style: ridge;
+  width: 100%;
 }
 
 .gametitle {
@@ -77,4 +87,8 @@
   font-family: "Courier New";
   font-weight: bolder;
   font-size : 50;
+}
+
+.header {
+  width: 100%;
 }
