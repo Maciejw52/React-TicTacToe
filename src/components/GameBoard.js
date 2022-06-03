@@ -1,19 +1,17 @@
 import React from 'react'
-import TurnTracker from './TurnTracker';
 import { useState } from 'react';
+import TurnTracker from './TurnTracker';
 import CheckWinner from '../utils/CheckWinner';
 import CheckNoWinner from '../utils/CheckNoWinner';
-import PopupWindow from './PopupWindow';
+import SetPlayerSwitch from '../utils/SetPlayerSwitch';
+import ModalShowWinner from './ModalShowWinner';
 
-export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, score, playerScore, setPlayerScore }) {
+export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, setPlayerScore, player, setPlayer }) {
 
   const PlayerNumber = {
     1 : "X",
     2 : "O"
   }
-
-  const [player, setPlayer] = useState(1);
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
   const playerClick = (boxId) => {
 
@@ -35,7 +33,7 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
               obj[player] = obj[player] + 1;
               
               // create alert here to pop up and say who won
-              setModalIsOpen(true);
+              setShow(true);
 
               //reset game after 2 seconds
               setTimeout(() => {
@@ -52,40 +50,30 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
               console.log('Game Restarting')
               setGameSymbol(tileSymbols);
             }, 2000);
-          } else if (!modalIsOpen){
-            setPlayer( () => { 
-              switch(player){
-                case 1:
-                  return 2;
-                case 2:
-                  return 1;
-                }
-            });
+          } else if (true){
+            setPlayer(SetPlayerSwitch(player));
           }
 
-          // Sets the next player
-          if (!modalIsOpen){
- 
-          }
         }    
-      } else if ( !CheckWinner(newObj)) {
-        // Once the player has won it resets game if player clicks on a new field again
-        console.log("HEEHEHEHEHEHEHHE");
-        setTimeout(() => {
-          console.log('Initial timeout!')
-          setGameSymbol(tileSymbols);
-        }, 1000);
       }
       return newObj;
     });
   };  
+
+  const [show, setShow] = useState(false);
+  
+  const handleClose = () => {
+    setPlayer(SetPlayerSwitch(player));
+    setShow(false);
+
+  };
+  const handleShow = () => setShow(true);
   
   
   return (
     <>
     <div className='gameboard'>
       <TurnTracker player={player}/>
-      <PopupWindow modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} player={player} />
       <div className="gridContainer">
         <div className="gridItem12" onClick={ () => {playerClick(1)}} >{gameSymbol[1]}</div>
         <div className="gridItem12" onClick={ () => {playerClick(2)}} >{gameSymbol[2]}</div>
@@ -98,7 +86,7 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, scor
         <div className="gridItem69" onClick={ () => {playerClick(9)}} >{gameSymbol[9]}</div>
       </div>
     </div>
-
+    <ModalShowWinner handleClose={handleClose} handleShow={handleShow} show={show} setShow={setShow} player={player} setPlayer={setPlayer}/>
     </>
 
   )

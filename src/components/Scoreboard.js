@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Scoreboard({ tileSymbols, gameSymbol, setGameSymbol, score, playerScore, setPlayerScore}) {
+export default function Scoreboard({ tileSymbols, setGameSymbol, score, playerScore, setPlayerScore}) {
   
   const handleResetGame = () => {
     setGameSymbol(tileSymbols);

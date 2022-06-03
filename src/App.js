@@ -8,6 +8,7 @@ import { useState } from 'react';
 Modal.setAppElement("#root");
 
 function App() {
+
   let tileSymbols = {
     1 : "",
     2 : "",
@@ -27,11 +28,12 @@ function App() {
 
   const [playerScore, setPlayerScore] = useState(score);
   const [gameSymbol,setGameSymbol] = useState(tileSymbols);
+  const [player, setPlayer] = useState(1);
   
   return (
     <>
     <Header tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore}/>
-    <GameBoard tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore}></GameBoard>    
+    <GameBoard tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore} player={player} setPlayer={setPlayer}></GameBoard>    
     </>
   );
 }
