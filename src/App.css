@@ -5,22 +5,16 @@ html, body {
 }
 
 /* Header css */
-.header {
-  width: 100%;
-  margin-bottom: 0;
-}
 
-.gametitle {
-  display: 'flex';
-  justify-content:'center';
-  align-items:'center';
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bolder;
-  font-size: '100vh';
-  text-align: center;
-  border-style: ridge;
-  padding-bottom: 3%;
-}
+.parentHeader {
+  position: relative;
+  }
+.childHeader {
+  position: absolute;
+  white-space: nowrap;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  }
 
 .scoreboard {
   text-align: center;

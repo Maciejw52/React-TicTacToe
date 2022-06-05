@@ -2,10 +2,7 @@ import './App.css';
 import GameBoard from './components/GameBoard';
 import Header from './components/Header';
 import React from 'react'
-import Modal from "react-modal";
 import { useState } from 'react';
-
-Modal.setAppElement("#root");
 
 function App() {
 
@@ -32,8 +29,8 @@ function App() {
   
   return (
     <>
-    <Header tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore}/>
-    <GameBoard tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore} player={player} setPlayer={setPlayer}></GameBoard>    
+    <Header tileSymbols={tileSymbols} setGameSymbol={setGameSymbol} score={score} playerScore={playerScore} setPlayerScore={setPlayerScore}/>
+    <GameBoard tileSymbols={tileSymbols} gameSymbol={gameSymbol} setGameSymbol={setGameSymbol} setPlayerScore={setPlayerScore} player={player} setPlayer={setPlayer}></GameBoard>    
     </>
   );
 }

@@ -5,6 +5,7 @@ import CheckWinner from '../utils/CheckWinner';
 import CheckNoWinner from '../utils/CheckNoWinner';
 import SetPlayerSwitch from '../utils/SetPlayerSwitch';
 import ModalShowWinner from './ModalShowWinner';
+import ModalShowNoWinner from './ModalShowNoWinner';
 
 export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, setPlayerScore, player, setPlayer }) {
 
@@ -12,6 +13,20 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, setP
     1 : "X",
     2 : "O"
   }
+
+  // Modal popup if there is a winner
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setPlayer(SetPlayerSwitch(player));
+    setShow(false);
+  };
+
+  // Modal popup if there is no winner
+  const [noWinner, setShowNoWinner] = useState(false);
+  const handleCloseNoWinner = () => {
+    setPlayer(SetPlayerSwitch(player));
+    setShowNoWinner(false);
+  };
 
   const playerClick = (boxId) => {
 
@@ -46,6 +61,9 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, setP
 
             });
           } else if( CheckNoWinner(newObj) ){
+            
+            setShowNoWinner(true);
+
             setTimeout(() => {
               console.log('Game Restarting')
               setGameSymbol(tileSymbols);
@@ -58,17 +76,7 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, setP
       }
       return newObj;
     });
-  };  
-
-  const [show, setShow] = useState(false);
-  
-  const handleClose = () => {
-    setPlayer(SetPlayerSwitch(player));
-    setShow(false);
-
-  };
-  const handleShow = () => setShow(true);
-  
+  };    
   
   return (
     <>
@@ -86,7 +94,8 @@ export default function GameBoard({ tileSymbols, gameSymbol, setGameSymbol, setP
         <div className="gridItem69" onClick={ () => {playerClick(9)}} >{gameSymbol[9]}</div>
       </div>
     </div>
-    <ModalShowWinner handleClose={handleClose} handleShow={handleShow} show={show} setShow={setShow} player={player} setPlayer={setPlayer}/>
+    <ModalShowWinner handleClose={handleClose} show={show} player={player} />
+    <ModalShowNoWinner handleCloseNoWinner={handleCloseNoWinner} noWinner={noWinner} />
     </>
 
   )
