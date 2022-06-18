@@ -6,10 +6,10 @@ export default function Header({ tileSymbols, setGameSymbol, score, playerScore,
     <>
     <div class="container">
       <div class="row align-items-stretch g-0">
-        <div class="col" style={{display: "flex", borderStyle: "ridge", justifyContent: "center",fontSize: "400%", fontFamily: "Courier New, Courier, monospace"}}>
+        <div class="col" style={{display: "flex", borderStyle: "ridge", justifyContent: "center", fontFamily: "Courier New, Courier, monospace"}}>
           <div class="parentHeader">
-            <div class="childHeader">
-              <p>TIC TAC TOE</p>
+            <div class="childHeader" style={{fontSize: "5vw", fontWeight: "bold"}}>
+              TIC TAC TOE
             </div>
           </div>
         </div>
